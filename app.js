@@ -7,7 +7,7 @@
 // "https://github.com/exchangeratesapi/exchangeratesapi.git";
 //There is one problem in this program that it is not taking the link applied in the app.js the url is facing 404 error code after applying the right link in the get repositry it will work fine
 const BASE_URL =
-"https://github.com/fawazahmed0/exchange-api/blob/main/MIGRATION.md";
+  "https://api.fxfeed.io/v1/latest?base=USD&currencies=EUR,GBP&api_key=fxf_AavNXTfnynU3V6HDFwOY";
 const dropdowns = document.querySelectorAll(".dropdown select");
 const btn = document.querySelector("form button");
 const fromCurr = document.querySelector(".from select");
@@ -39,19 +39,22 @@ const updateExchangeRate = async () => {
     amtVal = 1;
     amount.value = "1";
   }
-  const URL = `${BASE_URL}/${fromCurr.value.toLowerCase()}/${toCurr.value.toLowerCase()}.json`;
+
+  const URL = https://api.fxfeed.io/v1/latest?base=${fromCurr.value}&currencies=${toCurr.value},GBP&api_key=fxf_AavNXTfnynU3V6HDFwOY;
   let response = await fetch(URL);
+  console.log(response);
   let data = await response.json();
-  let rate = data[toCurr.value.toLowerCase()];
+  console.log(data);
+  let rate = data.rates[toCurr.value.toUpperCase()];
 
   let finalAmount = amtVal * rate;
-  msg.innerText = `${amtVal} ${fromCurr.value} = ${finalAmount} ${toCurr.value}`;
+  msg.innerText = ${amtVal} ${fromCurr.value} = ${finalAmount} ${toCurr.value};
 };
 
 const updateFlag = (element) => {
   let currCode = element.value;
   let countryCode = countryList[currCode];
-  let newSrc = `https://flagsapi.com/${countryCode}/flat/64.png`;
+  let newSrc = https://flagsapi.com/${countryCode}/flat/64.png;
   let img = element.parentElement.querySelector("img");
   img.src = newSrc;
 };
